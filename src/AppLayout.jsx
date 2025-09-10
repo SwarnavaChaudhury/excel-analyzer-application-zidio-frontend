@@ -30,7 +30,7 @@ export default function AppLayout() {
                 />
 
                 {/* Main Content */}
-                <div>
+                <div className='lg:w-full w-screen'>
                     <Header toggleSidebar={() => setIsOpen(!isOpen)} />
 
                     <div className="px-4 sm:px-6 md:px-10 py-4 pb-20 min-h-[70vh] transition-all duration-300">

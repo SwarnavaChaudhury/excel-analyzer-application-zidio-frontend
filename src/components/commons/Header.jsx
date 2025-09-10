@@ -6,6 +6,7 @@ import { FaChartLine } from "react-icons/fa";
 import { FiUploadCloud } from "react-icons/fi";
 import { MdFileUploadOff } from "react-icons/md";
 import { GiArtificialIntelligence } from "react-icons/gi";
+import { RiMenuUnfold2Line } from "react-icons/ri";
 
 
 
@@ -66,21 +67,16 @@ export default function Header({ toggleSidebar }) {
 
 
     return (
-        <header className="bg-white shadow-md px-6 py-4 flex items-center justify-between sticky top-0 left-0 z-50">
+        <header className="bg-white shadow-md px-6 py-4 flex items-center justify-between sticky top-0 left-0 z-50 lg:w-full w-screen">
             {/* Left Section */}
             <div className="flex items-center gap-3">
-                <button className="cursor-pointer pr-4">
-                    {/* Sidebar Icon */}
-                    <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                <button
+                    className="cursor-pointer pr-4"
+                    onClick={toggleSidebar}
+                >
+                    <RiMenuUnfold2Line className="text-2xl" />
                 </button>
+
                 <span className="text-xl font-bold text-gray-800">Excel Analyzer</span>
                 <span className="px-2 py-1 rounded bg-blue-100 text-blue-600 text-xs font-medium">
                     User Panel
@@ -105,7 +101,7 @@ export default function Header({ toggleSidebar }) {
 
                     {/* Notification Wizard */}
                     {showNotifications && (
-                        <div className="absolute right-0 mt-3 w-80 bg-white shadow-2xl rounded-xl z-[9999] border border-gray-200">
+                        <div className="absolute lg:right-0 right-[-50px] mt-3 w-80 bg-white shadow-2xl rounded-xl z-[9999] border border-gray-200">
                             <div className="flex items-center justify-between px-4 py-3 bg-green-200 rounded-t-xl">
                                 <span className="font-semibold text-gray-800">Notifications</span>
                                 <button className="text-xs text-blue-600 hover:underline cursor-pointer">Clear All</button>
@@ -162,12 +158,14 @@ export default function Header({ toggleSidebar }) {
                 </div>
 
                 {/* User Profile Image */}
-                <div className="flex items-center gap-2 cursor-pointer">
-                    <img
-                        src="https://ui-avatars.com/api/?name=User"
-                        alt="User Profile"
-                        className="w-8 h-8 rounded-full border"
-                    />
+                <div className="lg:block hidden">
+                    <div className="flex items-center gap-2 cursor-pointer">
+                        <img
+                            src="https://ui-avatars.com/api/?name=User"
+                            alt="User Profile"
+                            className="w-8 h-8 rounded-full border"
+                        />
+                    </div>
                 </div>
 
                 {/* Account Settings */}
@@ -176,13 +174,17 @@ export default function Header({ toggleSidebar }) {
                     className="flex items-center gap-[2px] text-gray-600 hover:text-blue-600 transition-colors font-medium cursor-pointer"
                 >
                     <FaRegUserCircle />
-                    Account Settings
+                    <span className="lg:block hidden">
+                        Account Settings
+                    </span>
                 </a>
 
                 {/* Logout */}
                 <button className="flex items-center gap-[2px] text-gray-600 hover:text-red-600 transition-colors font-medium cursor-pointer">
                     <IoIosLogOut />
-                    Logout
+                    <span className="lg:block hidden">
+                        Logout
+                    </span>
                 </button>
             </nav>
         </header>

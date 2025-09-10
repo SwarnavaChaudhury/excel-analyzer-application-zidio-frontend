@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export default function Login() {
     return (
@@ -35,12 +36,18 @@ export default function Login() {
                             autoComplete="current-password"
                         />
                     </div>
-                    <button
+                    {/* <button
                         type="submit"
                         className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition cursor-pointer"
                     >
                         Sign In
-                    </button>
+                    </button> */}
+                    <div className='text-center'>
+                        <Link to={'/user-dashboard'} className="w-full py-2 px-8 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition cursor-pointer">
+                            Sign In
+                        </Link>
+                    </div>
+
                 </form>
                 <div className="mt-6 text-center text-sm text-gray-500">
                     Don't have an account? <a href="#" className="text-blue-600 hover:underline">Sign up</a>

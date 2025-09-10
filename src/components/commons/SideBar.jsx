@@ -7,7 +7,10 @@ import { PiFilesFill } from "react-icons/pi";
 import { MdDriveFolderUpload } from "react-icons/md";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 
-export default function SideBar({ collapsed, isOpen, onClose, isMobile }) {
+export default function SideBar({ collapsed, isOpen, onClose, isMobile, externalSelect }) {
+
+
+
     const [selected, setSelected] = useState('Dashboard')
 
     // Load selected menu from localStorage on mount
@@ -18,13 +21,24 @@ export default function SideBar({ collapsed, isOpen, onClose, isMobile }) {
         }
     }, []);
 
+
+
+    // Run when externalSelect changes
+    useEffect(() => {
+        if (externalSelect) {
+            handleMenuClick(externalSelect);
+        }
+    }, [externalSelect]);
+
+
+
     const menuItems = [
-        { name: 'Dashboard', path: '/dashboard', icon: MdOutlineDashboardCustomize },
-        { name: 'Upload Files', path: '/upload-files', icon: MdDriveFolderUpload },
-        { name: 'File History', path: '/file-history', icon: PiFilesFill },
-        { name: 'Chart Visualisations', path: '/chart-visualisations', icon: FaRegChartBar },
-        { name: 'AI Insights', path: '/ai-insights', icon: GiArtificialIntelligence },
-        { name: 'Account Settings', path: '/account-settings', icon: RiAccountCircleLine },
+        { name: 'Dashboard', path: '/user-dashboard', icon: MdOutlineDashboardCustomize },
+        { name: 'Upload Files', path: '/user-dashboard/upload-files', icon: MdDriveFolderUpload },
+        { name: 'File History', path: '/user-dashboard/file-history', icon: PiFilesFill },
+        { name: 'Chart Visualisations', path: '/user-dashboard/chart-visualisations', icon: FaRegChartBar },
+        { name: 'AI Insights', path: '/user-dashboard/ai-insights', icon: GiArtificialIntelligence },
+        { name: 'Account Settings', path: '/user-dashboard/account-settings', icon: RiAccountCircleLine },
     ]
 
     const handleMenuClick = (menuName) => {
@@ -45,7 +59,7 @@ export default function SideBar({ collapsed, isOpen, onClose, isMobile }) {
 
             <aside
                 className={`
-                    bg-gradient-to-b from-green-500 to-green-700 text-white shadow-lg flex flex-col px-2 h-screen
+                    bg-gradient-to-b from-green-500 to-green-700 text-white shadow-lg flex flex-col px-2 lg:h-screen h-[120vh]
                     transition-all duration-300
                         ${isMobile
                         ? `fixed top-0 left-0 z-50 ${isOpen ? 'translate-x-0' : '-translate-x-full'} w-64`
@@ -72,7 +86,7 @@ export default function SideBar({ collapsed, isOpen, onClose, isMobile }) {
                                         className={`flex items-center gap-3 px-5 py-3 rounded-lg transition-colors duration-200 cursor-pointer
                                             ${selected === item.name
                                                 ? 'bg-white text-blue-900 font-semibold shadow-md'
-                                                : 'hover:bg-blue-800 hover:text-white text-blue-100'}
+                                                : 'hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-500 hover:text-white text-blue-100'}
                                             `}
                                     >
                                         <Icon className="text-xl" />

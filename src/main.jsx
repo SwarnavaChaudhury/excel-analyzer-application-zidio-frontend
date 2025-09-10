@@ -16,15 +16,21 @@ createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
 
+      <Route path='/' element={<App />} />
       <Route path='/login' element={<Login />} />
 
       <Route element={<AppLayout />}>
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/upload-files' element={<UploadFiles />} />
-        <Route path='/file-history' element={<FileHistory />} />
-        <Route path='/chart-visualisations' element={<ChartVisualisation />} />
-        <Route path='/ai-insights' element={<AIInsights />} />
-        <Route path='/account-settings' element={<AccountSettings />} />
+
+        <Route path='/user-dashboard' element={<Dashboard />} />
+
+        <Route path='/user-dashboard'>
+          <Route path='upload-files' element={<UploadFiles />} />
+          <Route path='file-history' element={<FileHistory />} />
+          <Route path='chart-visualisations' element={<ChartVisualisation />} />
+          <Route path='ai-insights' element={<AIInsights />} />
+          <Route path='account-settings' element={<AccountSettings />} />
+        </Route>
+
       </Route>
 
     </Routes>
