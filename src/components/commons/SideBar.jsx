@@ -7,28 +7,20 @@ import { PiFilesFill } from "react-icons/pi";
 import { MdDriveFolderUpload } from "react-icons/md";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 
-export default function SideBar({ collapsed, isOpen, onClose, isMobile, externalSelect }) {
+export default function SideBar({ collapsed, isOpen, onClose, isMobile, selectedMenu, setSelectedMenu }) {
 
 
 
-    const [selected, setSelected] = useState('Dashboard')
+    // const [selected, setSelected] = useState('Dashboard')
 
-    // Load selected menu from localStorage on mount
-    useEffect(() => {
-        const savedMenu = localStorage.getItem("selectedMenu");
-        if (savedMenu) {
-            setSelected(savedMenu);
-        }
-    }, []);
+    // // Load selected menu from localStorage on mount
+    // useEffect(() => {
+    //     const savedMenu = localStorage.getItem("selectedMenu");
+    //     if (savedMenu) {
+    //         setSelected(savedMenu);
+    //     }
+    // }, []);
 
-
-
-    // Run when externalSelect changes
-    useEffect(() => {
-        if (externalSelect) {
-            handleMenuClick(externalSelect);
-        }
-    }, [externalSelect]);
 
 
 
@@ -42,8 +34,11 @@ export default function SideBar({ collapsed, isOpen, onClose, isMobile, external
     ]
 
     const handleMenuClick = (menuName) => {
-        setSelected(menuName);
-        localStorage.setItem("selectedMenu", menuName); // Save to localStorage
+        // setSelected(menuName);
+        // localStorage.setItem("selectedMenu", menuName); // Save to localStorage
+        // if (isMobile) onClose();
+
+        setSelectedMenu(menuName);
         if (isMobile) onClose();
     }
 
@@ -84,7 +79,7 @@ export default function SideBar({ collapsed, isOpen, onClose, isMobile, external
                                         to={item.path}
                                         onClick={() => handleMenuClick(item.name)}
                                         className={`flex items-center gap-3 px-5 py-3 rounded-lg transition-colors duration-200 cursor-pointer
-                                            ${selected === item.name
+                                            ${selectedMenu === item.name
                                                 ? 'bg-white text-blue-900 font-semibold shadow-md'
                                                 : 'hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-500 hover:text-white text-blue-100'}
                                             `}

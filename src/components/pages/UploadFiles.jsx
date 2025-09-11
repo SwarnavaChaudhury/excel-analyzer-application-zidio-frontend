@@ -32,7 +32,7 @@ export default function UploadFiles() {
 
 
     return (
-        <section>
+        <section className="py-8 min-h-screen">
 
             <Breadcrumb page='Upload Files' />
 

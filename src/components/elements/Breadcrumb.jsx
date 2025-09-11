@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { xcelvisionContext } from '../../AppLayout';
 import { Link } from 'react-router'
 
-export default function Breadcrumb({ page }) {
+// export default function Breadcrumb({ page }) {
+export default function Breadcrumb() {
 
 
+    const { selectedMenu, setSelectedMenu } = useContext(xcelvisionContext);
+
+    // const handleHomeClick = () => {
+    //     localStorage.setItem("selectedMenu", "Dashboard");
+    // };
 
     const handleHomeClick = () => {
-        localStorage.setItem("selectedMenu", "Dashboard");
+        setSelectedMenu("Dashboard");
     };
 
 
@@ -29,7 +36,8 @@ export default function Breadcrumb({ page }) {
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                                {page}
+                                {/* {page} */}
+                                {selectedMenu}
                             </span>
                         </div>
                     </li>

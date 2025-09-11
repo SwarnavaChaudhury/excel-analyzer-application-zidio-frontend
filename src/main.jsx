@@ -11,6 +11,7 @@ import ChartVisualisation from './components/pages/ChartVisualisation.jsx'
 import AIInsights from './components/pages/AIInsights.jsx'
 import AccountSettings from './components/pages/AccountSettings.jsx'
 import UploadFiles from './components/pages/UploadFiles.jsx'
+import CreateNewChart from './components/pages/CreateNewChart.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='upload-files' element={<UploadFiles />} />
           <Route path='file-history' element={<FileHistory />} />
           <Route path='chart-visualisations' element={<ChartVisualisation />} />
+          <Route path='create-new-chart' element={<CreateNewChart />} />
           <Route path='ai-insights' element={<AIInsights />} />
           <Route path='account-settings' element={<AccountSettings />} />
         </Route>

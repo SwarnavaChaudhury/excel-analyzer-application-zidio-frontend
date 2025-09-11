@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { xcelvisionContext } from "../../AppLayout";
+
 import { IoNotificationsOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
@@ -7,6 +9,7 @@ import { FiUploadCloud } from "react-icons/fi";
 import { MdFileUploadOff } from "react-icons/md";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { RiMenuUnfold2Line } from "react-icons/ri";
+import { Link } from "react-router";
 
 
 
@@ -16,6 +19,8 @@ import { RiMenuUnfold2Line } from "react-icons/ri";
 
 export default function Header({ toggleSidebar }) {
 
+
+    const { setSelectedMenu } = useContext(xcelvisionContext);
 
     const [showNotifications, setShowNotifications] = useState(false);
     const notifRef = useRef(null);
@@ -62,6 +67,19 @@ export default function Header({ toggleSidebar }) {
             default:
                 return { icon: <FaChartLine />, bg: "bg-gray-100", color: "text-gray-600" };
         }
+    };
+
+
+
+
+
+    // const handleHomeClick = () => {
+    //     localStorage.setItem("selectedMenu", "Account Settings");
+    // };
+
+
+    const handleHomeClick = () => {
+        setSelectedMenu("Account Settings");
     };
 
 
@@ -139,21 +157,21 @@ export default function Header({ toggleSidebar }) {
 
                     <style>
                         {`
-            @keyframes blink {
-              0%, 100% { opacity: 1; }
-              50% { opacity: 0.3; }
-            }
-            .animate-blink {
-              animation: blink 1s infinite;
-            }
-            .custom-scrollbar::-webkit-scrollbar {
-              width: 6px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb {
-              background: #cbd5e1;
-              border-radius: 4px;
-            }
-            `}
+                            @keyframes blink {
+                            0%, 100% { opacity: 1; }
+                            50% { opacity: 0.3; }
+                            }
+                            .animate-blink {
+                            animation: blink 1s infinite;
+                            }
+                            .custom-scrollbar::-webkit-scrollbar {
+                            width: 6px;
+                            }
+                            .custom-scrollbar::-webkit-scrollbar-thumb {
+                            background: #cbd5e1;
+                            border-radius: 4px;
+                            }
+                        `}
                     </style>
                 </div>
 
@@ -169,15 +187,14 @@ export default function Header({ toggleSidebar }) {
                 </div>
 
                 {/* Account Settings */}
-                <a
-                    href="#"
+                <Link to={'/user-dashboard/account-settings'} onClick={handleHomeClick}
                     className="flex items-center gap-[2px] text-gray-600 hover:text-blue-600 transition-colors font-medium cursor-pointer"
                 >
                     <FaRegUserCircle />
                     <span className="lg:block hidden">
                         Account Settings
                     </span>
-                </a>
+                </Link>
 
                 {/* Logout */}
                 <button className="flex items-center gap-[2px] text-gray-600 hover:text-red-600 transition-colors font-medium cursor-pointer">

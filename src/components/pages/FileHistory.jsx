@@ -9,7 +9,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 export default function FileHistory() {
     return (
-        <section className="py-8 bg-gray-50 min-h-screen">
+        <section className="py-8 min-h-screen">
             
             <Breadcrumb page="File History" />
 
